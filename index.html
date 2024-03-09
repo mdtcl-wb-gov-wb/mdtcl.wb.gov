@@ -42,6 +42,21 @@
             -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
     </style>
+	<script type="text/javascript">
+	$( document ).ready(function() {
+		var today = new Date();
+		var tomorrow = new Date();
+		var dd = String(today.getDate()).padStart(2, '0');
+		var endDay = String(today.getDate() + 1).padStart(2, '0');
+		var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+		var yyyy = today.getFullYear();
+	
+		today =  dd + '/' + mm + '/' + yyyy+ ' 07:59 PM';
+		tomorrow = endDay + '/' + mm + '/' + yyyy + ' 07:59 AM';
+		document.getElementById("beginTime").innerHTML = today;
+		document.getElementById("endTime").innerHTML = tomorrow;
+	});
+	</script>
 </head>
 <body style="background-image: url(./img/mainbg.png);">
 
@@ -70,7 +85,7 @@
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                             <h6>
-                                <span id="lbl_issue_date" class="text-success"> : 09/03/2024 08:15 PM</span></h6>
+                                <span id="lbl_issue_date" class="text-success"> : <span id="beginTime" value=""></span></span></h6>
 
                         </div>
 
@@ -80,7 +95,7 @@
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                             <h6>
-                                <span id="lbl_validity_till" class="text-success"> : 10/03/2024 08:15 AM</span></h6>
+                                <span id="lbl_validity_till" class="text-success"> : <span id="endTime" value=""></span></span></h6>
 
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
