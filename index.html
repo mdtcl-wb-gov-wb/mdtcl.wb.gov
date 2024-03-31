@@ -47,19 +47,24 @@
 		var today = new Date();
 		var tomorrow = new Date();
 		var hours = today.getHours();
+		var yyyy = today.getFullYear();
 		if(hours >= 12){
 			var dd = String(today.getDate()).padStart(2, '0');
-			var endDay = String(today.getDate() + 1).padStart(2, '0');
+			var endDay1 = new Date(today);
+			endDay1.setDate(today.getDate() + 1);
+			var endDay = String(endDay1.getDate()).padStart(2, '0');
+			today =  dd + '/' + String(today.getMonth() + 1).padStart(2, '0') + '/' + yyyy+ ' 07:59 PM';
+			tomorrow = endDay + '/' + String(endDay1.getMonth() + 1).padStart(2, '0') + '/' + yyyy + ' 07:59 AM';
 		}
 		else{
-			var dd = String(today.getDate() - 1).padStart(2, '0');
+			var dd1 = new Date(today);
+			dd1.setDate(today.getDate() - 1);
+			var dd = String(dd1.getDate()).padStart(2, '0');
 			var endDay = String(today.getDate()).padStart(2, '0');
-		}
-		var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-		var yyyy = today.getFullYear();
-	
-		today =  dd + '/' + mm + '/' + yyyy+ ' 07:59 PM';
-		tomorrow = endDay + '/' + mm + '/' + yyyy + ' 07:59 AM';
+			var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+			today =  dd + '/' + String(dd.getMonth() + 1).padStart(2, '0') + '/' + yyyy+ ' 07:59 PM';
+			tomorrow = endDay + '/' + String(endDay.getMonth() + 1).padStart(2, '0') + '/' + yyyy + ' 07:59 AM';
+		}		
 		document.getElementById("beginTime").innerHTML = today;
 		document.getElementById("endTime").innerHTML = tomorrow;
 	});
